@@ -1,0 +1,557 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f7f8f5">
+
+<title>Akhtar Hussain Wani | MERAKSAHIB</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<style>
+:root {
+  --green: #397b4b;
+  --lime: #91bd55;
+  --blue: #287eae;
+  --ink: #202922;
+  --muted: #69756d;
+  --line: #e6ebe4;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  padding: 30px 16px;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 8% 8%, #e9f1e7, transparent 34%),
+    radial-gradient(circle at 95% 90%, #edf1e9, transparent 32%),
+    #f7f8f5;
+  color: var(--ink);
+  font-family: "DM Sans", Arial, sans-serif;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 520px;
+  animation: appear .8s ease both;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid white;
+  border-radius: 28px;
+  box-shadow: 0 25px 75px rgba(29,58,36,.10);
+}
+
+.header {
+  padding: 28px 30px 27px;
+  text-align: center;
+  background: linear-gradient(145deg,#f5f8f1,#fff 70%);
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  width: 210px;
+  height: 210px;
+  border: 1px solid #91bd5540;
+  border-radius: 50%;
+  left: -120px;
+  top: -130px;
+  box-shadow:
+    0 0 0 22px #91bd550c,
+    0 0 0 45px #91bd5508;
+}
+
+.brand-logo {
+  display: block;
+  width: min(100%, 320px);
+  max-height: 270px;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.divider {
+  width: 65px;
+  height: 3px;
+  background: linear-gradient(90deg,var(--lime),var(--green));
+  border-radius: 10px;
+  margin: 0 auto 20px;
+}
+
+.name {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(29px,7vw,38px);
+  font-weight: 600;
+  margin-bottom: 9px;
+}
+
+.designation {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green);
+}
+
+.company {
+  margin-top: 14px;
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: 700;
+  color: #315e3b;
+}
+
+.content {
+  padding: 26px 28px;
+}
+
+.intro {
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+  margin-bottom: 23px;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.action {
+  min-height: 57px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: white;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  transition: .25s ease;
+}
+
+.action:hover {
+  transform: translateY(-3px);
+  border-color: #a9c99d;
+  box-shadow: 0 8px 20px #25472b10;
+}
+
+.icon {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  background: #edf4e9;
+  color: var(--green);
+  font-size: 17px;
+}
+
+.info {
+  margin-top: 23px;
+  border-top: 1px solid var(--line);
+  padding-top: 15px;
+}
+
+.info-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px 0;
+  border-bottom: 1px solid #eef0eb;
+  color: #48544b;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.info-row:last-child {
+  border: none;
+}
+
+.label {
+  display: block;
+  margin-bottom: 4px;
+  color: #89938a;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+}
+
+.info-row a {
+  color: inherit;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.qr-panel {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 20px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fbfcfa;
+}
+
+#qrcode {
+  width: 90px;
+  height: 90px;
+  flex-shrink: 0;
+}
+
+#qrcode img,
+#qrcode canvas {
+  width: 90px !important;
+  height: 90px !important;
+}
+
+.qr-copy {
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.qr-copy strong {
+  display: block;
+  color: var(--ink);
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.footer {
+  padding: 19px 23px;
+  background: #fafbf8;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.footer small {
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: #89938a;
+  font-weight: 700;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+button {
+  border: none;
+  border-radius: 30px;
+  padding: 12px 15px;
+  background: var(--green);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: .2s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+button.secondary {
+  background: #eaf1e7;
+  color: #315e3b;
+}
+
+.note {
+  text-align: center;
+  color: #849087;
+  font-size: 10px;
+  line-height: 1.5;
+  margin: 14px 8px;
+}
+
+@media(max-width:400px) {
+  .header { padding: 24px 20px; }
+  .content { padding: 22px 18px; }
+  .footer { padding: 16px; }
+  .action { padding: 10px 9px; font-size: 12px; }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="wrapper">
+
+<section class="card" id="visitingCard">
+
+<header class="header">
+
+<img
+  src="/image.png"
+  class="brand-logo"
+  alt="MERAKSAHIB Logo"
+>
+
+<div class="divider"></div>
+
+<h1 class="name">Akhtar Hussain Wani</h1>
+
+<div class="designation">Managing Director</div>
+
+<div class="company">
+MERAKSAHIB<br>
+FED FRUIT PRODUCER COMPANY LIMITED
+</div>
+
+</header>
+
+<section class="content">
+
+<p class="intro">
+Connecting growers, producers and markets
+with quality and trust.
+</p>
+
+<div class="actions">
+
+<a class="action" href="tel:+919797915942">
+<span class="icon">☎</span>
+Call Now
+</a>
+
+<a class="action"
+href="https://wa.me/919797915942"
+target="_blank" rel="noopener">
+<span class="icon">◉</span>
+WhatsApp
+</a>
+
+<a class="action"
+href="mailto:fpomeerakhsahib@gmail.com">
+<span class="icon">✉</span>
+Email
+</a>
+
+<a class="action"
+href="https://www.google.com/maps/search/?api=1&query=Shop%20No%2002%20Darwa%20Frestwari%20Wagoora%20Baramulla%20J%26K%20193101"
+target="_blank" rel="noopener">
+<span class="icon">⌖</span>
+Directions
+</a>
+
+</div>
+
+<div class="info">
+
+<div class="info-row">
+<span class="icon">▣</span>
+<div>
+<span class="label">FSSAI License Number</span>
+21022052000194
+</div>
+</div>
+
+<div class="info-row">
+<span class="icon">⌖</span>
+<div>
+<span class="label">Business Address</span>
+Shop No. 02, Darwa Frestwari, Wagoora,
+Baramulla, J&amp;K 193101
+</div>
+</div>
+
+<div class="info-row">
+<span class="icon">✉</span>
+<div>
+<span class="label">Email Address</span>
+<a href="mailto:fpomeerakhsahib@gmail.com">
+fpomeerakhsahib@gmail.com
+</a>
+</div>
+</div>
+
+</div>
+
+<div class="qr-panel">
+
+<div id="qrcode"></div>
+
+<div class="qr-copy">
+<strong>Save &amp; Share This Card</strong>
+Scan the QR code to open this digital visiting card.
+</div>
+
+</div>
+
+</section>
+
+<footer class="footer">
+
+<small>MERAKSAHIB · DIGITAL CARD</small>
+
+<div class="buttons">
+
+<button class="secondary" onclick="saveContact()">
+Save Contact
+</button>
+
+<button onclick="downloadPNG()">
+Download PNG
+</button>
+
+</div>
+
+</footer>
+
+</section>
+
+<p class="note">
+Publish this page online to activate its permanent QR code.
+</p>
+
+</main>
+
+<script>
+
+// QR CODE
+
+const qrBox = document.getElementById("qrcode");
+
+if (window.QRCode && /^https?:/.test(location.href)) {
+
+  new QRCode(qrBox, {
+    text: location.href,
+    width: 180,
+    height: 180,
+    colorDark: "#24452d",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.H
+  });
+
+} else {
+
+  qrBox.innerHTML =
+    "<small>QR activates after hosting</small>";
+
+}
+
+
+// SAVE CONTACT / VCF
+
+function saveContact() {
+
+  const vcard = [
+    "BEGIN:VCARD",
+    "VERSION:3.0",
+    "N:Wani;Akhtar Hussain;;;",
+    "FN:Akhtar Hussain Wani",
+    "ORG:MERAKSAHIB FED FRUIT PRODUCER COMPANY LIMITED",
+    "TITLE:Managing Director",
+    "TEL;TYPE=CELL:+919797915942",
+    "EMAIL;TYPE=WORK:fpomeerakhsahib@gmail.com",
+    "ADR;TYPE=WORK:;;Shop No. 02, Darwa Frestwari, Wagoora;Baramulla;Jammu and Kashmir;193101;India",
+    "NOTE:FSSAI License No. 21022052000194",
+    "END:VCARD"
+  ].join("\r\n");
+
+  const blob = new Blob([vcard], {
+    type: "text/vcard;charset=utf-8"
+  });
+
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+
+  link.href = url;
+  link.download = "Akhtar-Hussain-Wani.vcf";
+  link.click();
+
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+
+// DOWNLOAD CARD AS PNG
+
+async function downloadPNG() {
+
+  if (!window.html2canvas) {
+    alert("Please connect to the internet and try again.");
+    return;
+  }
+
+  const card = document.getElementById("visitingCard");
+
+  try {
+
+    const canvas = await html2canvas(card, {
+      scale: 3,
+      backgroundColor: "#ffffff",
+      useCORS: true
+    });
+
+    const link = document.createElement("a");
+
+    link.download = "MERAKSAHIB-Digital-Visiting-Card.png";
+    link.href = canvas.toDataURL("image/png");
+
+    link.click();
+
+  } catch(error) {
+
+    alert("PNG download failed. Please try again.");
+
+  }
+
+}
+
+</script>
+
+</body>
+</html>
